@@ -4,7 +4,7 @@
     "description": "Application localization tools.",
     "author": {
         "name": "Stanislav Kalashnik",
-        "email": "sk@infomir.eu"
+        "email": "darkpark.main@gmail.com"
     },
     "repository": "spasdk/gettext",
     "scripts": {
