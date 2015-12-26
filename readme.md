@@ -1,19 +1,19 @@
 STB SDK localization
 ====================
 
-[![NPM version](https://img.shields.io/npm/v/stb-gettext.svg?style=flat-square)](https://www.npmjs.com/package/stb-gettext)
-[![Dependencies Status](https://img.shields.io/david/stbsdk/gettext.svg?style=flat-square)](https://david-dm.org/stbsdk/gettext)
-[![Gitter](https://img.shields.io/badge/gitter-join%20chat-blue.svg?style=flat-square)](https://gitter.im/DarkPark/stb)
+[![NPM version](https://img.shields.io/npm/v/spa-gettext.svg?style=flat-square)](https://www.npmjs.com/package/spa-gettext)
+[![Dependencies Status](https://img.shields.io/david/spasdk/gettext.svg?style=flat-square)](https://david-dm.org/spasdk/gettext)
+[![Gitter](https://img.shields.io/badge/gitter-join%20chat-blue.svg?style=flat-square)](https://gitter.im/DarkPark/spa)
 
 
-STB SDK localization module. It's an instance of [Emitter](https://github.com/cjssdk/emitter) component.
+This localization module is an instance of [Emitter](https://github.com/cjssdk/emitter) component.
 Contains localization messages data used by other modules and provides methods to requests these messages.
 
 
 ## Installation
 
 ```bash
-npm install stb-gettext
+npm install spa-gettext
 ```
 
 
@@ -22,7 +22,7 @@ npm install stb-gettext
 Add to the scope:
 
 ```js
-var gettext = require('stb-gettext');
+var gettext = require('spa-gettext');
 ```
 
 Load localization messages file (`./lang/ru.json`):
@@ -69,10 +69,10 @@ gettext.addListener('load', function () {
 
 ## Contribution
 
-If you have any problem or suggestion please open an issue [here](https://github.com/stbsdk/gettext/issues).
+If you have any problem or suggestion please open an issue [here](https://github.com/spasdk/gettext/issues).
 Pull requests are welcomed with respect to the [JavaScript Code Style](https://github.com/DarkPark/jscs).
 
 
 ## License
 
-`stb-gettext` is released under the [GPL-3.0 License](http://opensource.org/licenses/GPL-3.0).
+`spa-gettext` is released under the [GPL-3.0 License](http://opensource.org/licenses/GPL-3.0).
