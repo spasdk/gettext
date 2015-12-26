@@ -1,29 +1,29 @@
 {
-	"name": "stb-gettext",
-	"version": "1.3.0",
-	"description": "STB SDK localization.",
-	"author": {
-		"name": "Stanislav Kalashnik",
-		"email": "sk@infomir.eu"
-	},
-	"repository": "stbsdk/gettext",
-	"scripts": {
-		"lint": "eslint *.js",
-		"jsdoc": "jsdoc --destination doc *.js readme.md"
-	},
-	"dependencies": {
-		"stb-emitter": "1.*.*"
-	},
-	"devDependencies": {},
-	"keywords": [
-		"stb",
-		"sdk",
-		"device",
-		"tv",
-		"devkit",
-		"framework",
-		"gettext",
-		"localization"
-	],
-	"license": "GPL-3.0"
+    "name": "stb-gettext",
+    "version": "1.3.0",
+    "description": "STB SDK localization.",
+    "author": {
+        "name": "Stanislav Kalashnik",
+        "email": "sk@infomir.eu"
+    },
+    "repository": "stbsdk/gettext",
+    "scripts": {
+        "lint": "eslint *.js",
+        "jsdoc": "jsdoc --destination doc *.js readme.md"
+    },
+    "dependencies": {
+        "stb-emitter": "1.*.*"
+    },
+    "devDependencies": {},
+    "keywords": [
+        "stb",
+        "sdk",
+        "device",
+        "tv",
+        "devkit",
+        "framework",
+        "gettext",
+        "localization"
+    ],
+    "license": "GPL-3.0"
 }

@@ -57,7 +57,7 @@ It's also possible to listen to instance events (`load` and `error`):
 ```js
 // subscribe to events
 gettext.addListener('load', function () {
-	...
+    ...
 });
 ```
 
