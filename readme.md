@@ -10,14 +10,14 @@ This localization module is an instance of [Emitter](https://github.com/cjssdk/e
 Contains localization messages data used by other modules and provides methods to requests these messages.
 
 
-## Installation
+## Installation ##
 
 ```bash
 npm install spa-gettext
 ```
 
 
-## Usage
+## Usage ##
 
 Add to the scope:
 
@@ -62,17 +62,17 @@ gettext.addListener('load', function () {
 ```
 
 
-## Debug mode
+## Debug mode ##
 
 > There is a global var `DEBUG` which activates additional consistency checks and protection logic not available in release mode.
 
 
-## Contribution
+## Contribution ##
 
 If you have any problem or suggestion please open an issue [here](https://github.com/spasdk/gettext/issues).
 Pull requests are welcomed with respect to the [JavaScript Code Style](https://github.com/DarkPark/jscs).
 
 
-## License
+## License ##
 
 `spa-gettext` is released under the [GPL-3.0 License](http://opensource.org/licenses/GPL-3.0).
