@@ -5,7 +5,7 @@
 
 'use strict';
 
-var Emitter = require('stb-emitter'),
+var Emitter = require('cjs-emitter'),
     gettext = new Emitter(),
     meta    = null,
     data    = null;
