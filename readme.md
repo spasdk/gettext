@@ -3,7 +3,7 @@ STB SDK localization
 
 [![NPM version](https://img.shields.io/npm/v/spa-gettext.svg?style=flat-square)](https://www.npmjs.com/package/spa-gettext)
 [![Dependencies Status](https://img.shields.io/david/spasdk/gettext.svg?style=flat-square)](https://david-dm.org/spasdk/gettext)
-[![Gitter](https://img.shields.io/badge/gitter-join%20chat-blue.svg?style=flat-square)](https://gitter.im/DarkPark/spa)
+[![Gitter](https://img.shields.io/badge/gitter-join%20chat-blue.svg?style=flat-square)](https://gitter.im/DarkPark/spasdk)
 
 
 This localization module is an instance of [Emitter](https://github.com/cjssdk/emitter) component.
