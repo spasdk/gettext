@@ -14,7 +14,6 @@
     "dependencies": {
         "cjs-emitter": "1.*.*"
     },
-    "devDependencies": {},
     "keywords": [
         "spa",
         "spasdk",
