@@ -6,7 +6,7 @@ STB SDK localization
 [![Gitter](https://img.shields.io/badge/gitter-join%20chat-blue.svg?style=flat-square)](https://gitter.im/DarkPark/spasdk)
 
 
-This localization module is an instance of [Emitter](https://github.com/cjssdk/emitter) component.
+This localization module is an instance of [Emitter](https://github.com/cjssdk/emitter) module.
 Contains localization messages data used by other modules and provides methods to requests these messages.
 
 
