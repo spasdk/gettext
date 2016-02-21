@@ -3,6 +3,8 @@
  * @license GNU GENERAL PUBLIC LICENSE Version 3
  */
 
+/* eslint no-path-concat: 0 */
+
 'use strict';
 
 var Emitter = require('cjs-emitter'),
