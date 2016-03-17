@@ -31,7 +31,7 @@ var Emitter = require('cjs-emitter'),
 gettext.load = function ( config, callback ) {
     var xhr = new XMLHttpRequest();
 
-    if ( DEBUG ) {
+    if ( DEVELOP ) {
         if ( !config.name || typeof config.name !== 'string' ) { throw new Error(__filename + ': config.name must be a nonempty string'); }
         if ( typeof callback !== 'function' ) { throw new Error(__filename + ': wrong callback type'); }
     }
@@ -134,7 +134,7 @@ window.pgettext = function ( context, msgId ) {
 window.ngettext = function ( msgId, plural, value ) {
     /* eslint no-eval: 0 */
 
-    if ( DEBUG ) {
+    if ( DEVELOP ) {
         if ( Number(value) !== value ) { throw new Error(__filename + ': value must be a number'); }
     }
 
