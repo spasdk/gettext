@@ -94,17 +94,10 @@ gettext.load = function ( config, callback ) {
  * @example
  * console.log(gettext('some line to be localized'));
  */
-window.gettext = function ( msgId ) {
+window._ = window.gettext = function ( msgId ) {
     return data && data[''][msgId] ? data[''][msgId] : msgId;
 };
 
-if ( DEVELOP ) {
-    if ( '_' in window && window._ !== window.gettext ) {
-        throw new Error('using _ for gettext is not allowed');
-    }
-}
-
-window._ = window.gettext;
 
 /**
  * The "p" in "pgettext" stands for "particular": fetches a particular translation of the textual message.
