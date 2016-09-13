@@ -132,7 +132,9 @@ window.pgettext = function ( context, msgId ) {
  * console.log(ngettext('{0} cat', '{0} cats', 1));
  */
 window.ngettext = function ( msgId, plural, value ) {
+    /* eslint no-unused-vars: 0 */
     /* eslint no-eval: 0 */
+    var n;
 
     if ( DEVELOP ) {
         if ( Number(value) !== value ) { throw new Error(__filename + ': value must be a number'); }
@@ -140,7 +142,7 @@ window.ngettext = function ( msgId, plural, value ) {
 
     if ( data && meta ) {
         // translation
-        return data[''][msgId][eval('var n = ' + value + '; ' + meta.plural)];
+        return data[''][msgId][eval('n = ' + value + '; ' + meta.plural)];
     }
 
     // english
