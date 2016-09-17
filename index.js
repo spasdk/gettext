@@ -134,6 +134,7 @@ window.pgettext = function ( context, msgId ) {
 window.ngettext = function ( msgId, plural, value ) {
     /* eslint no-unused-vars: 0 */
     /* eslint no-eval: 0 */
+    /* eslint id-length: 0 */
     var n;
 
     if ( DEVELOP ) {
