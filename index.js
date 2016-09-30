@@ -8,9 +8,8 @@
 'use strict';
 
 var Emitter = require('cjs-emitter'),
-    gettext = new Emitter(),
-    meta    = null,
-    data    = null;
+    Gettext = require('cjs-gettext'),
+    loader  = new Emitter();
 
 
 /**
@@ -28,8 +27,9 @@ var Emitter = require('cjs-emitter'),
  *     debug.inspect(data);
  * });
  */
-gettext.load = function ( config, callback ) {
-    var xhr = new XMLHttpRequest();
+loader.load = function ( config, callback ) {
+    var xhr = new XMLHttpRequest(),
+        gettext;
 
     if ( DEVELOP ) {
         if ( !config.name || typeof config.name !== 'string' ) { throw new Error(__filename + ': config.name must be a nonempty string'); }
@@ -51,29 +51,32 @@ gettext.load = function ( config, callback ) {
 
         try {
             json = JSON.parse(xhr.responseText);
-            meta = json.meta;
-            data = json.data;
-            callback(null, data);
+            callback(null, json);
         } catch ( error ) {
-            meta = null;
-            data = null;
             xhr.onerror(error);
         }
 
+        gettext = new Gettext(json);
+
+        // make it global
+        window.gettext  = window._ = gettext.gettext;
+        window.pgettext = gettext.pgettext;
+        window.ngettext = gettext.ngettext;
+
         // there are some listeners
-        if ( gettext.events['load'] ) {
+        if ( loader.events['load'] ) {
             // notify listeners
-            gettext.emit('load');
+            loader.emit('load');
         }
     };
 
-    xhr.onerror = function ( error ) {
+    xhr.ontimeout = xhr.onerror = function ( error ) {
         callback(error);
 
         // there are some listeners
-        if ( gettext.events['error'] ) {
+        if ( loader.events['error'] ) {
             // notify listeners
-            gettext.emit('error', error);
+            loader.emit('error', error);
         }
     };
 
@@ -82,74 +85,5 @@ gettext.load = function ( config, callback ) {
 };
 
 
-/**
- * Display the native language translation of a textual message.
- *
- * @param {string} msgId textual message
- *
- * @return {string} translated text
- *
- * @global
- *
- * @example
- * console.log(gettext('some line to be localized'));
- */
-window._ = window.gettext = function ( msgId ) {
-    return data && data[''][msgId] ? data[''][msgId] : msgId;
-};
-
-
-/**
- * The "p" in "pgettext" stands for "particular": fetches a particular translation of the textual message.
- *
- * @param {string} context message context
- * @param {string} msgId textual message
- *
- * @return {string} translated text
- *
- * @global
- *
- * @example
- * console.log(pgettext('some context', 'some text'));
- */
-window.pgettext = function ( context, msgId ) {
-    return data && data[context][msgId] ? data[context][msgId] : msgId;
-};
-
-
-/**
- * Display the native language translation of a textual message whose grammatical form depends on a number.
- *
- * @param {string} msgId textual message in a singular form
- * @param {string} plural textual message in a plural form
- * @param {number} value message number
- *
- * @return {string} translated text
- *
- * @global
- *
- * @example
- * console.log(ngettext('{0} cat', '{0} cats', 1));
- */
-window.ngettext = function ( msgId, plural, value ) {
-    /* eslint no-unused-vars: 0 */
-    /* eslint no-eval: 0 */
-    /* eslint id-length: 0 */
-    var n;
-
-    if ( DEVELOP ) {
-        if ( Number(value) !== value ) { throw new Error(__filename + ': value must be a number'); }
-    }
-
-    if ( data && meta ) {
-        // translation
-        return data[''][msgId][eval('n = ' + value + '; ' + meta.plural)];
-    }
-
-    // english
-    return value === 1 ? msgId : plural;
-};
-
-
 // public
-module.exports = gettext;
+module.exports = loader;

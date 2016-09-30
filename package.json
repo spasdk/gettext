@@ -16,7 +16,8 @@
         "jsdoc": "jsdoc --destination doc *.js readme.md"
     },
     "dependencies": {
-        "cjs-emitter": "cjssdk/emitter"
+        "cjs-emitter": "cjssdk/emitter",
+        "cjs-gettext": "cjssdk/gettext"
     },
     "devDependencies": {
         "eslint": "3.*.*",
