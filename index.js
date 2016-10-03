@@ -51,7 +51,6 @@ loader.load = function ( config, callback ) {
 
         try {
             json = JSON.parse(xhr.responseText);
-            callback(null, json);
         } catch ( error ) {
             xhr.onerror(error);
         }
@@ -62,6 +61,8 @@ loader.load = function ( config, callback ) {
         window.gettext  = window._ = gettext.gettext;
         window.pgettext = gettext.pgettext;
         window.ngettext = gettext.ngettext;
+
+        callback(null, json);
 
         // there are some listeners
         if ( loader.events['load'] ) {
