@@ -13,6 +13,32 @@ var Emitter = require('cjs-emitter'),
 
 
 /**
+ * Wrap the given data with gettext instance
+ * and export methods to the global scope.
+ *
+ * @param {Object} [data] localization data
+ *
+ * @return {Gettext} gettext instance
+ */
+function prepare ( data ) {
+    var gettext = new Gettext(data);
+
+    // make it global
+    window.gettext  = window._ = gettext.gettext;
+    window.pgettext = gettext.pgettext;
+    window.ngettext = gettext.ngettext;
+
+    return gettext;
+}
+
+
+/**
+ * Main application language
+ */
+loader.defaultLanguage = 'en';
+
+
+/**
  * Simple gettext implementation.
  *
  * @param {Object} config options
@@ -21,15 +47,10 @@ var Emitter = require('cjs-emitter'),
  * @param {string} [config.ext=json] language file extension
  * @param {function} callback hook on ready
  *
- * @example
- * gettext.load({name: 'ru'}, function ( error, data ) {
- *     debug.log(error);
- *     debug.inspect(data);
- * });
+ * @return {boolean} flag is ajax request was made
  */
 loader.load = function ( config, callback ) {
-    var xhr = new XMLHttpRequest(),
-        gettext;
+    var xhr;
 
     if ( DEVELOP ) {
         if ( !config.name || typeof config.name !== 'string' ) { throw new Error(__filename + ': config.name must be a nonempty string'); }
@@ -40,38 +61,39 @@ loader.load = function ( config, callback ) {
     config.ext  = config.ext  || 'json';
     config.path = config.path || 'lang';
 
-    /* todo: get rid of JSON.parse in future
-    xhr.overrideMimeType('application/json');
-    xhr.responseType = 'json';/**/
+    // is it necessary to request a localization file?
+    if ( config.name === loader.defaultLanguage ) {
+        // no
+        prepare();
+        callback(null);
 
-    xhr.responseType = 'text';
+        return false;
+    }
+
+    // yes
+    xhr = new XMLHttpRequest();
 
     xhr.onload = function () {
         var json;
 
         try {
             json = JSON.parse(xhr.responseText);
+
+            prepare(json);
+            callback(null);
+
+            // there are some listeners
+            if ( loader.events['load'] ) {
+                // notify listeners
+                loader.emit('load');
+            }
         } catch ( error ) {
             xhr.onerror(error);
-        }
-
-        gettext = new Gettext(json);
-
-        // make it global
-        window.gettext  = window._ = gettext.gettext;
-        window.pgettext = gettext.pgettext;
-        window.ngettext = gettext.ngettext;
-
-        callback(null, json);
-
-        // there are some listeners
-        if ( loader.events['load'] ) {
-            // notify listeners
-            loader.emit('load');
         }
     };
 
     xhr.ontimeout = xhr.onerror = function ( error ) {
+        prepare();
         callback(error);
 
         // there are some listeners
@@ -83,6 +105,8 @@ loader.load = function ( config, callback ) {
 
     xhr.open('GET', config.path + '/' + config.name + '.' + config.ext, true);
     xhr.send(null);
+
+    return true;
 };
 
 

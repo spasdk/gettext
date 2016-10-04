@@ -29,9 +29,8 @@ var gettext = require('spa-gettext');
 Load localization messages file (`./lang/ru.json`):
 
 ```js
-gettext.load({name: 'ru'}, function ( error, data ) {
-    debug.log(error);
-    debug.inspect(data);
+gettext.load({name: 'ru'}, function ( error ) {
+    console.log(error);
 });
 ```
 
@@ -56,11 +55,17 @@ console.log(ngettext('{0} cat', '{0} cats', 1));
 It's also possible to listen to instance events (`load` and `error`):
 
 ```js
-// subscribe to events
 gettext.addListener('load', function () {
-    ...
+    // handle localization loading
+});
+
+gettext.addListener('error', function () {
+    // handle localization loading
 });
 ```
+
+On localization loading for `en` language real AJAX request is not executed.
+There is `loader.defaultLanguage` option to control this behaviour.
 
 
 ## Development mode ##
