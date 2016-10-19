@@ -17,7 +17,7 @@
     },
     "dependencies": {
         "cjs-emitter": "1.*.*",
-        "cjs-gettext": "cjssdk/gettext"
+        "cjs-gettext": "1.*.*"
     },
     "devDependencies": {
         "eslint": "3.*.*",
