@@ -53,8 +53,12 @@ loader.load = function ( config, callback ) {
     var xhr;
 
     if ( DEVELOP ) {
-        if ( !config.name || typeof config.name !== 'string' ) { throw new Error(__filename + ': config.name must be a nonempty string'); }
-        if ( typeof callback !== 'function' ) { throw new Error(__filename + ': wrong callback type'); }
+        if ( !config.name || typeof config.name !== 'string' ) {
+            throw new Error(__filename + ': config.name must be a nonempty string');
+        }
+        if ( typeof callback !== 'function' ) {
+            throw new Error(__filename + ': wrong callback type');
+        }
     }
 
     // defaults
