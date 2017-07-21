@@ -84,7 +84,6 @@ loader.load = function ( config, callback ) {
             json = JSON.parse(xhr.responseText);
 
             prepare(json);
-            callback(null);
 
             // there are some listeners
             if ( loader.events['load'] ) {
@@ -94,6 +93,8 @@ loader.load = function ( config, callback ) {
         } catch ( error ) {
             xhr.onerror(error);
         }
+        
+        callback(null);
     };
 
     xhr.ontimeout = xhr.onerror = function ( error ) {
