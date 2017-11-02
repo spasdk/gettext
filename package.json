@@ -13,7 +13,7 @@
     "scripts": {
         "lint": "eslint --ignore-pattern '/docs/' .",
         "test": "npm run lint",
-        "jsdoc": "jsdoc --destination doc *.js readme.md"
+        "jsdoc": "jsdoc --destination docs *.js readme.md"
     },
     "dependencies": {
         "cjs-emitter": "1.*.*",
