@@ -11,7 +11,7 @@
         "url": "https://github.com/spasdk/gettext.git"
     },
     "scripts": {
-        "lint": "eslint .",
+        "lint": "eslint --ignore-pattern '/docs/' .",
         "test": "npm run lint",
         "jsdoc": "jsdoc --destination doc *.js readme.md"
     },
