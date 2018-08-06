@@ -20,9 +20,8 @@
         "cjs-gettext": "1.*.*"
     },
     "devDependencies": {
-        "eslint": "4.*.*",
-        "jsdoc": "3.*.*",
-        "spa-eslint-config": "1.*.*"
+        "jsdoc": "^3.5.5",
+        "spa-eslint": "^1.0.0"
     },
     "keywords": [
         "spa",
