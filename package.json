@@ -16,8 +16,8 @@
         "jsdoc": "jsdoc --destination docs *.js readme.md"
     },
     "dependencies": {
-        "cjs-emitter": "1.*.*",
-        "cjs-gettext": "1.*.*"
+        "cjs-emitter": "^1.5.3",
+        "cjs-gettext": "^1.0.4"
     },
     "devDependencies": {
         "jsdoc": "^3.5.5",
